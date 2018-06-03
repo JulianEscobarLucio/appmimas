@@ -1,0 +1,6 @@
+## YAML Template.
+---
+
+server: 
+    port: 9546
+        
