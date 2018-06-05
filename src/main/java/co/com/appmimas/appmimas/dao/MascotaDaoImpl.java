@@ -17,36 +17,37 @@ public class MascotaDaoImpl implements MascotaDaoInterface {
     Connection con;
 
     @Override
-    public int insertar(Mascota mascota) throws Exception {
-        int respuesta = 0;
+    public Integer insertar(Mascota mascota) throws Exception {
+    	Integer respuesta = 0;
         con = conexionDB.getConexion(); 
         PreparedStatement preparedStatement = null ;
-        String sql = "insert into mascota (Id, Nombre, IdResponsable, Especie, Raza, Genero,imagen, Tamaño, "
+        String sql = "insert into mascota (Nombre, IdResponsable, Especie, Raza, Genero,imagen, Tamaño, "
                 + "Estado, Caracteristicas, FechaN, Señales, Color, Colorojos, Personalidad, EstadoSalud)"
-                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
         
         preparedStatement  = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1, mascota.getId());
-        preparedStatement.setString(2, mascota.getNombre());
-        preparedStatement.setString(3, mascota.getIdResponsable());
-        preparedStatement.setString(4, mascota.getEspecie());
-        preparedStatement.setString(5, mascota.getRaza());
-        preparedStatement.setString(6, mascota.getGenero());
-        preparedStatement.setString(7, mascota.getImagen());
-        preparedStatement.setString(8, mascota.getTamano());
-        preparedStatement.setString(9, mascota.getEstado());
-        preparedStatement.setString(10, mascota.getCaracteristicas());
-        preparedStatement.setString(11, mascota.getFechaN());
-        preparedStatement.setString(12, mascota.getSenales());
-        preparedStatement.setString(13, mascota.getColor());
-        preparedStatement.setString(14, mascota.getColorojos());
-        preparedStatement.setString(15, mascota.getPersonalidad());
-        preparedStatement.setString(16, mascota.getEstadoSalud());
+        preparedStatement.setString(1, mascota.getNombre());
+        preparedStatement.setString(2, mascota.getIdResponsable());
+        preparedStatement.setString(3, mascota.getEspecie());
+        preparedStatement.setString(4, mascota.getRaza());
+        preparedStatement.setString(5, mascota.getGenero());
+        preparedStatement.setString(6, mascota.getImagen());
+        preparedStatement.setString(7, mascota.getTamano());
+        preparedStatement.setString(8, mascota.getEstado());
+        preparedStatement.setString(9, mascota.getCaracteristicas());
+        preparedStatement.setString(10, mascota.getFechaN());
+        preparedStatement.setString(11, mascota.getSenales());
+        preparedStatement.setString(12, mascota.getColor());
+        preparedStatement.setString(13, mascota.getColorojos());
+        preparedStatement.setString(14, mascota.getPersonalidad());
+        preparedStatement.setString(15, mascota.getEstadoSalud());
         preparedStatement .executeUpdate();
         ResultSet genKeysRs = preparedStatement.getGeneratedKeys();
         genKeysRs.next();
         respuesta  = genKeysRs.getInt(1);
         genKeysRs.close();
+        preparedStatement.close();
+        con.close();
         return respuesta;
     }
 
@@ -56,7 +57,7 @@ public class MascotaDaoImpl implements MascotaDaoInterface {
         con = conexionDB.getConexion(); 
         PreparedStatement preparedStatement = null ;
         String sql = "Select   Nombre, IdResponsable,Imagen, Especie, Raza, Genero, Tamaño, "
-                + "Estado, Caracteristicas, FechaN, Señales, Color, Colorojos, Personalidad, EstadoSalud from Mascota where Id = ?";       
+                + "Estado, Caracteristicas, FechaN, Señales, Color, Colorojos, Personalidad, EstadoSalud from mascota where Id = ?";       
         preparedStatement  = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, mascota.getId());        
         respuesta = preparedStatement.executeQuery();
@@ -119,7 +120,7 @@ public class MascotaDaoImpl implements MascotaDaoInterface {
         int respuesta = 0;
         con = conexionDB.getConexion(); 
         PreparedStatement preparedStatement = null ;
-        String sql = "delete from Mascota  where Id = ?";        
+        String sql = "delete from mascota  where Id = ?";        
         preparedStatement  = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);      
         preparedStatement.setString(1, mascota.getId());
         respuesta = preparedStatement.executeUpdate();  

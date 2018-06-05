@@ -14,14 +14,14 @@ import co.com.appmimas.appmimas.model.Adopcion;
 import co.com.appmimas.appmimas.util.conexionDB;
 
 @Repository
-public class AdopcionCrud implements CrudInterface {
+public class AdopcionDaoImpl implements AdopcionDaoInterface {
 
 	private Connection con = null;
 	private PreparedStatement preparedStatement;
 
 	@Override
-	public int insertar(Object request) throws Exception {
-		int respuesta = 0;
+	public Integer insertar(Object request) throws Exception {
+		Integer respuesta = 0;
 		Adopcion adopcion = (Adopcion) request;
 		adopcion.setFecha(new Date());
 		con = conexionDB.getConexion();
@@ -34,7 +34,12 @@ public class AdopcionCrud implements CrudInterface {
 		preparedStatement.setString(4, adopcion.getNombreAdjunto());
 		preparedStatement.setString(5, adopcion.getAdjunto());
 		preparedStatement.setString(6, adopcion.getEstadoSolicitud());
-        respuesta = preparedStatement.executeUpdate();  
+        preparedStatement.executeUpdate();
+        ResultSet genKeysRs = preparedStatement.getGeneratedKeys();
+        genKeysRs.next();
+        respuesta  = genKeysRs.getInt(1);
+        genKeysRs.close();
+        
         preparedStatement.close();
         con.close();
 		return respuesta;

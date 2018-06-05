@@ -2,6 +2,7 @@ package co.com.appmimas.appmimas.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
@@ -12,14 +13,14 @@ import co.com.appmimas.appmimas.model.Apadrinamiento;
 import co.com.appmimas.appmimas.util.conexionDB;
 
 @Repository
-public class ApadrinamientoCrud implements CrudInterface {
+public class ApadrinamientoCrud implements ApadrinamientoDaoInterface {
 
 	private Connection con = null;
 	private PreparedStatement preparedStatement;
 
 	@Override
-	public int insertar(Object request) throws Exception {
-		int respuesta = 0;
+	public Integer insertar(Object request) throws Exception {
+		Integer respuesta = 0;
 		Apadrinamiento apadrinamiento = (Apadrinamiento) request;
 		apadrinamiento.setFecha(new Date());
 		con = conexionDB.getConexion();
@@ -32,7 +33,11 @@ public class ApadrinamientoCrud implements CrudInterface {
 		preparedStatement.setString(4, apadrinamiento.getNombreAdjunto());
 		preparedStatement.setString(5, apadrinamiento.getAdjunto());
 		preparedStatement.setString(6, "1");
-        respuesta = preparedStatement.executeUpdate();  
+        preparedStatement.executeUpdate();
+        ResultSet genKeysRs = preparedStatement.getGeneratedKeys();
+        genKeysRs.next();
+        respuesta  = genKeysRs.getInt(1);
+        genKeysRs.close();
         preparedStatement.close();
         con.close();
 		return respuesta;

@@ -7,7 +7,7 @@ import co.com.appmimas.appmimas.model.Mascota;
 
 public interface MascotaDaoInterface {
     
-    int insertar(Mascota mascota) throws Exception;
+    Integer insertar(Mascota mascota) throws Exception;
     
     Mascota consultar(Mascota mascota) throws Exception;
     

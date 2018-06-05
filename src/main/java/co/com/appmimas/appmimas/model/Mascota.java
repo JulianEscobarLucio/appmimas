@@ -1,6 +1,6 @@
 package co.com.appmimas.appmimas.model;
 
-public class Mascota {
+public class Mascota extends Response{
     
     private String nombre;
     private String idResponsable;

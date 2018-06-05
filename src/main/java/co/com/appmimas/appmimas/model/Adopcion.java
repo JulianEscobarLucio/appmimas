@@ -2,7 +2,7 @@ package co.com.appmimas.appmimas.model;
 
 import java.util.Date;
 
-public class Adopcion {
+public class Adopcion extends Response {
 	private String idAdopcion;
 	private String usuario;
 	private Date fecha;
