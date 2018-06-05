@@ -18,7 +18,7 @@ import co.com.appmimas.appmimas.dao.MascotaDaoInterface;
 import co.com.appmimas.appmimas.model.Adopcion;
 import co.com.appmimas.appmimas.model.Mascota;
 
-@CrossOrigin(origins = {"http://localhost:8090"}) 
+@CrossOrigin(origins = {"http://mimassite.github.io."}) 
 @RestController
 @RequestMapping(value = "/")
 public class AdopcionController {

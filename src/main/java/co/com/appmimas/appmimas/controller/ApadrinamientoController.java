@@ -1,15 +1,6 @@
 package co.com.appmimas.appmimas.controller;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +14,7 @@ import co.com.appmimas.appmimas.dao.MascotaDaoInterface;
 import co.com.appmimas.appmimas.model.Apadrinamiento;
 import co.com.appmimas.appmimas.model.Mascota;
 
-@CrossOrigin(origins = {"http://localhost:8090"}) 
+@CrossOrigin(origins = {"http://mimassite.github.io."}) 
 @RestController
 @RequestMapping(value = "/")
 public class ApadrinamientoController {
