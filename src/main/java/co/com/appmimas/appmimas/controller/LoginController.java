@@ -12,7 +12,7 @@ import co.com.appmimas.appmimas.dao.LoginDaoInterface;
 import co.com.appmimas.appmimas.dao.UsuarioDaoInterface;
 import co.com.appmimas.appmimas.model.Usuario;
 
-@CrossOrigin(origins = {"http://mimassite.github.io."}) 
+@CrossOrigin(origins = "*",maxAge = 4600)
 @RestController
 @RequestMapping(value = "/")
 public class LoginController {

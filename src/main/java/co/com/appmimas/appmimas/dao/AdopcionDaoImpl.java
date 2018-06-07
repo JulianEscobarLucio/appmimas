@@ -95,14 +95,14 @@ public class AdopcionDaoImpl implements AdopcionDaoInterface {
 	}
 
 	@Override
-	public List<Object> listar() throws Exception {
+	public List<Adopcion> listar() throws Exception {
         ResultSet respuesta;
         con = conexionDB.getConexion(); 
         PreparedStatement preparedStatement = null ;
         String sql = "Select idSolicitud,  usuario, mascota,fecha, nombreadjunto, adjunto, estado from adopcion";       
         preparedStatement  = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         respuesta = preparedStatement.executeQuery();
-        List<Object> listAdopcion = new ArrayList<Object>();
+        List<Adopcion> listAdopcion = new ArrayList<Adopcion>();
         Adopcion miadopcion = null;
         while(respuesta.next()){
         	miadopcion = new Adopcion();

@@ -7,14 +7,14 @@ public class conexionDB {
     
     
     public static Connection getConexion() {
-//        String url = "jdbc:mysql://localhost:3306/mimascota";
-//        String usuario = "root";
-//        String clave = "";
-//        String driver = "com.mysql.jdbc.Driver";
-    	  String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10241187";
-    	  String usuario = "sql10241187";
-    	  String clave = "SrbCPgXXsc";
-    	  String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/mimascota";
+        String usuario = "root";
+        String clave = "";
+        String driver = "com.mysql.jdbc.Driver";
+//    	  String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/id6092333_appmimas";
+//    	  String usuario = "sql10241187";
+//    	  String clave = "SrbCPgXXsc";
+//    	  String driver = "com.mysql.jdbc.Driver";
         return getConexion(url, usuario, clave, driver);
     }
 

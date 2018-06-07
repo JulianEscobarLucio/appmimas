@@ -2,230 +2,89 @@ package co.com.appmimas.appmimas.model;
 
 import java.util.Date;
 
-public class Evento {
-	
-	private String idEvento;
+public class Evento  extends Response{
 	private String nombre;
-	private String usuario;
-	private String fechai;
-	private String fechaf;
+	private String idResponsable;
+	private String fechaI;
+	private String fechaF;
 	private String lugar;
 	private String descripcion;
-	private String estado;
 	private String imagen;
-
+	private String estado;
+	private String id;	
 	
-	
-
-
-
-
-
-	public String getIdEvento() {
-		return idEvento;
-	}
-
-
-
-
-
-
-
-
-	public void setIdEvento(String idEvento) {
-		this.idEvento = idEvento;
-	}
-
-
-
-
-
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
-
-
-
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
-
-
-
-
-
-	public String getUsuario() {
-		return usuario;
+	public String getIdResponsable() {
+		return idResponsable;
 	}
 
-
-
-
-
-
-
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setIdResponsable(String idResponsable) {
+		this.idResponsable = idResponsable;
 	}
 
-
-
-
-
-
-
-	public String getFechai() {
-		return fechai;
+	public String getFechaI() {
+		return fechaI;
 	}
 
-
-
-
-
-
-
-
-	public void setFechai(String fechai) {
-		this.fechai = fechai;
+	public void setFechaI(String fechaI) {
+		this.fechaI = fechaI;
 	}
 
-
-
-
-
-
-
-
-	public String getFechaf() {
-		return fechaf;
+	public String getFechaF() {
+		return fechaF;
 	}
 
-
-
-
-
-
-
-
-	public void setFechaf(String fechaf) {
-		this.fechaf = fechaf;
+	public void setFechaF(String fechaF) {
+		this.fechaF = fechaF;
 	}
-
-
-
-
-
-
-
 
 	public String getLugar() {
 		return lugar;
 	}
 
-
-
-
-
-
-
-
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
 	}
-
-
-
-
-
-
-
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-
-
-
-
-
-
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-
-
-
-
-
-
-
-	public String getEstado() {
-		return estado;
-	}
-
-
-
-
-
-
-
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	//
-
-
-
-
-
 
 	public String getImagen() {
 		return imagen;
 	}
 
-
-
-
-
-
-
-
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
 
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
+	public String getId() {
+		return id;
+	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "Evento [idEvento=" + idEvento + ", usuario=" + usuario + ",  fechai="
-				+ fechai + ", fechaf=" + fechaf + ", lugar=" + lugar + ", descripcion="
-				+ descripcion + ", estado=" + estado + ", imagen=" + imagen + "]";
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
-	
-
 }

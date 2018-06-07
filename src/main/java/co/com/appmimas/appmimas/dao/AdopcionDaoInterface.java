@@ -2,6 +2,8 @@ package co.com.appmimas.appmimas.dao;
 
 import java.util.List;
 
+import co.com.appmimas.appmimas.model.Adopcion;
+
 public interface AdopcionDaoInterface {
 	Integer insertar(Object request) throws Exception;
     
@@ -11,5 +13,5 @@ public interface AdopcionDaoInterface {
     
     Object eliminar(Object consultar) throws Exception;
     
-    List<Object> listar() throws Exception;
+    List<Adopcion> listar() throws Exception;
 }

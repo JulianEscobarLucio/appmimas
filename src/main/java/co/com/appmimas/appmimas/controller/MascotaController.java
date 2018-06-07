@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.com.appmimas.appmimas.dao.MascotaDaoInterface;
 import co.com.appmimas.appmimas.model.Mascota;
 
-@CrossOrigin(origins = {"http://mimassite.github.io."}) 
+@CrossOrigin(origins = "*",maxAge = 4600)
 @RestController
 @RequestMapping(value = "/")
 public class MascotaController {

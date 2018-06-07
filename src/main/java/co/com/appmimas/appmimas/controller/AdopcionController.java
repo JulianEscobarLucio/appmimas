@@ -18,7 +18,7 @@ import co.com.appmimas.appmimas.dao.MascotaDaoInterface;
 import co.com.appmimas.appmimas.model.Adopcion;
 import co.com.appmimas.appmimas.model.Mascota;
 
-@CrossOrigin(origins = {"http://mimassite.github.io."}) 
+@CrossOrigin(origins = "*",maxAge = 4600)
 @RestController
 @RequestMapping(value = "/")
 public class AdopcionController {
@@ -57,7 +57,7 @@ public class AdopcionController {
 	public List<Adopcion> listarSolicitud() throws JSONException  {
 		List<Adopcion> listaSolicitud = new ArrayList<>();
         try {  
-            listaSolicitud  = (List<Adopcion>)(List<?>) adopcionDaoInterface.listar();
+            listaSolicitud  =  adopcionDaoInterface.listar();
             return listaSolicitud;
         } catch (Exception e) {
             return listaSolicitud;
@@ -74,7 +74,7 @@ public class AdopcionController {
             if(respuestaAdopcion.getIdMascota() != null){  
                respuestaAdopcion.setCodigoRespuesta("200");
             }else{
-              respuestaAdopcion.setCodigoRespuesta("201");   
+               respuestaAdopcion.setCodigoRespuesta("201");   
             }               
             return respuestaAdopcion;
         } catch (Exception e) {
@@ -101,7 +101,7 @@ public class AdopcionController {
             }          
             return response;
         } catch (Exception e) {
-            e.printStackTrace();
+			e.printStackTrace();
             return "500";
         }
     }
