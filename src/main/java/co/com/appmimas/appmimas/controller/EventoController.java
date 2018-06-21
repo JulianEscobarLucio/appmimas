@@ -25,17 +25,22 @@ public class EventoController {
 	EventoDaoInterface eventoDaoInterface;
 
 	@PostMapping("/eventos")
-	public String registrarEvento(@RequestBody Evento evento) {
-		String response = "200";
+	public Evento  registrarEvento(@RequestBody Evento evento) {
+		Evento eventoResponse = new Evento();
 		try {
-			int respueata = eventoDaoInterface.insertar(evento);
-			if (respueata != 1) {
-				response = "201";
+			Integer  respueata = eventoDaoInterface.insertar(evento);
+			if (respueata > 0) {
+				eventoResponse.setId(respueata.toString());
+				eventoResponse.setCodigoRespuesta("200");
+			}else {
+				eventoResponse.setCodigoRespuesta("201");
 			}
-			return response;
+			return eventoResponse;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "500";
+			eventoResponse.setCodigoRespuesta("500");
+			return eventoResponse;
+
 		}
 	}
 
@@ -45,7 +50,7 @@ public class EventoController {
 		try {
 			int respueata = eventoDaoInterface.actualizar(evento);
 			if (respueata != 1) {
-				response = "201s";
+				response = "201";
 			}
 			return response;
 		} catch (Exception e) {

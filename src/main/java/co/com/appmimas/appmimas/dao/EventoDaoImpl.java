@@ -22,20 +22,25 @@ public class EventoDaoImpl implements EventoDaoInterface {
 		Integer respuesta = 0;
         con = conexionDB.getConexion(); 
         PreparedStatement preparedStatement = null ;
-        String sql = "insert into evento (Id, Nombre, IdResponsable, FechaI, FechaF, Lugar, Descripcion, Estado, imagen)"
-                + " values (?,?,?,?,?,?,?,?,?) ";
+        String sql = "insert into evento (Nombre, IdResponsable, FechaI, FechaF, Lugar, Descripcion, Estado, imagen)"
+                + " values (?,?,?,?,?,?,?,?) ";
         Evento evento = (Evento) request;
         preparedStatement  = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1, evento.getId());
-        preparedStatement.setString(2, evento.getNombre());
-        preparedStatement.setString(3, evento.getIdResponsable());
-        preparedStatement.setString(11, evento.getFechaI());
-        preparedStatement.setString(11, evento.getFechaF());
-        preparedStatement.setString(3, evento.getLugar());
-        preparedStatement.setString(3, evento.getDescripcion());
-        preparedStatement.setString(9, evento.getEstado());
-        preparedStatement.setString(7, evento.getImagen());
-        respuesta = preparedStatement .executeUpdate();
+        preparedStatement.setString(1, evento.getNombre());
+        preparedStatement.setString(2, evento.getIdResponsable());
+        preparedStatement.setString(3, evento.getFechaI());
+        preparedStatement.setString(4, evento.getFechaF());
+        preparedStatement.setString(5, evento.getLugar());
+        preparedStatement.setString(6, evento.getDescripcion());
+        preparedStatement.setString(7, evento.getEstado());
+        preparedStatement.setString(8, evento.getImagen());
+        preparedStatement .executeUpdate();
+        ResultSet genKeysRs = preparedStatement.getGeneratedKeys();
+        genKeysRs.next();
+        respuesta  = genKeysRs.getInt(1);
+        genKeysRs.close();
+        preparedStatement.close();
+        con.close();
         return respuesta;
 	}
 
@@ -79,10 +84,10 @@ public class EventoDaoImpl implements EventoDaoInterface {
         preparedStatement.setString(3, evento.getFechaI());
         preparedStatement.setString(4, evento.getFechaF());
         preparedStatement.setString(5, evento.getLugar());
-        preparedStatement.setString(5, evento.getDescripcion());
-        preparedStatement.setString(5, evento.getEstado());
-        preparedStatement.setString(6, evento.getImagen());
-        preparedStatement.setString(16, evento.getId());
+        preparedStatement.setString(6, evento.getDescripcion());
+        preparedStatement.setString(7, evento.getEstado());
+        preparedStatement.setString(8, evento.getImagen());
+        preparedStatement.setString(9, evento.getId());
         respuesta = preparedStatement.executeUpdate();  
         preparedStatement.close();
         con.close();        
