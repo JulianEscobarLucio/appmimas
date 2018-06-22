@@ -34,12 +34,11 @@ public class UsuarioController {
 	            int respueata = usuarioDaoInterface.insertar(usuario);
 	            if(respueata==1){  
 	            	response = "200";
-	            }else{
-	            	response = "201"; 
 	            }          
             } 
         } catch (Exception e) {
         	System.out.println(e.getMessage());
+        	response = "500";
         }finally {
         	return response;
         }
